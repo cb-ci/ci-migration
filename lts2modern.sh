@@ -17,6 +17,7 @@ export CONTROLLER_NAME_TARGET="mytest-casc"
 export CONTROLLER_URL_TARGET=${BASE_URL}"/"${CONTROLLER_NAME_TARGET}
 export CONTROLLER_IMAGE_VERSION_TARGET="latest"
 export CONTROLLER_TOKEN_TARGET=$TOKEN
+#export BUNDLE_NAME="" # ore just "none"?  
 export BUNDLE_NAME="master/rs-jenkins-global"
 export STORAGE_CLASS=ssd-cloudbees-ci-cloudbees-core
 
@@ -42,6 +43,8 @@ echo "------------------  CREATE BACKUP ------------------"
 #For testing purposes we create a backup locally from an OSS Controller
 CUR_DIR=$(pwd)
 cd /Users/XXX/projects/docker-jenkins-oss-controller/jenkins-data
+#when using casc-bundle, we might define our plugins in plugins.yaml. So we can exclude them from the back using the  --exclude=plugins/ \
+#remove the  --exclude=plugins/ \ filter if you want to get the plugins also in your backup (when not using plugins.yam)
 tar -cvzf  $CUR_DIR/$BACKUP_FILE \
     --exclude=cache/ \
     --exclude=plugins/ \
