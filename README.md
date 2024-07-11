@@ -1,8 +1,8 @@
 # ci-migration
 
-Scripting approaches of steps described here for the Jenkins CI Controller migrations
+Script approaches of migration steps for Jenkins OSS LTS to CI Controller (k8s) migrations
 
-links i followed:
+links O followed:
 
 * https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-controllers/migrating-jenkins-instances
 * https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-controllers/migrating-jenkins-to-a-new-machine
