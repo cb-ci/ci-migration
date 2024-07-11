@@ -34,12 +34,12 @@ BACKUP_FILE=controller-backup.tar.gz
 echo "------------------  CREATE BACKUP ------------------"
 #Create a backup from the legacy controller
 
-#TODO:Set legacy Controller in quit mode when running a backup
+#TODO: Set legacy Controller in quit mode when running a backup
 #see https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-controllers/how-to-start-stop-or-restart-your-instance
-#TODO:Legacy controller on-prem might require ssh exec to create an backup remotly
+#TODO: Legacy controller on-prem might require ssh exec to create a backup remotly
 #see https://www.cyberciti.biz/faq/unix-linux-execute-command-using-ssh/
 
-#For testing purpose swe just create a backup localy from an OSS Controller
+#For testing purposes we just create a backup locally from an OSS Controller
 CUR_DIR=$(pwd)
 cd /Users/acaternberg/projects/docker-jenkins-oss-controller/jenkins-data
 tar -cvzf  $CUR_DIR/$BACKUP_FILE \
