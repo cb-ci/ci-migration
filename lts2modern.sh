@@ -94,6 +94,9 @@ echo "Ingress created LB_IP: $LB_IP"
 
 echo "------------------  COPY BACKUP TO ${CONTROLLER_NAME_TARGET} ------------------"
 #Copy the backup to the target controller
+#TODO: If possible, directly retrieve the backup via ssh, s3, gcp-bucket, or whatever from a remote storage.
+#Download/Upload from the workstation is not efficient/performant!
+
 #TODO: Check if tmp has sufficient capacity, use maybe mounted volume/pvc better instead
 kubectl cp $BACKUP_FILE ${CONTROLLER_NAME_TARGET}-0:/tmp/ || false
 
