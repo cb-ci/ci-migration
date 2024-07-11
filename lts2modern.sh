@@ -53,17 +53,15 @@ cd $CUR_DIR
 
 
 echo "------------------  DELETE MANAGED CONTROLLER $CONTROLLER_NAME_TARGET------------------"
-#Delete the target Controller and PBV if it exist
+#Release and delete the target Controller from Cjoc and delete PVC if  exist
 curl  -Ls -XPOST  -u $CONTROLLER_TOKEN_TARGET "$CJOC_URL/job/$CONTROLLER_NAME_TARGET/stopAction"  2>&1 > /dev/null
 sleep 10
 curl  -Ls -XPOST -u $CONTROLLER_TOKEN_TARGET "$CJOC_URL/job/$CONTROLLER_NAME_TARGET/doDelete"  2>&1 > /dev/null
 echo "Verify if PVC ${CONTROLLER_NAME_TARGET}-0  exist"
-if [ -n "$(kubectl get pvc jenkins-home-$CONTROLLER_NAME_TARGET-0)" ]
-then
-  #see https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/operations-center/how-to-delete-a-managed-controller-in-cloudbees-jenkins-enterprise-and-cloudbees-core
-   echo "PVC jenkins-home-$CONTROLLER_NAME_TARGET-0 exist, will be deleted now"
-   kubectl delete pvc jenkins-home-$CONTROLLER_NAME_TARGET-0
-fi
+#see https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/operations-center/how-to-delete-a-managed-controller-in-cloudbees-jenkins-enterprise-and-cloudbees-core
+echo "PVC jenkins-home-$CONTROLLER_NAME_TARGET-0 exist, will be deleted now"
+kubectl delete pvc jenkins-home-$CONTROLLER_NAME_TARGET-0  2>&1 > /dev/null
+
 
 echo "------------------  CREATING MANAGED CONTROLLER ------------------"
 #Create a target controller (Kubernetes)
