@@ -2,7 +2,7 @@
 
 Scripting approaches of steps described here for the Jenkins CI Controller migrations
 
-#links i followed:
+links i followed:
 
 * https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-controllers/migrating-jenkins-instances
 * https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-controllers/migrating-jenkins-to-a-new-machine
