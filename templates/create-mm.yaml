@@ -1,0 +1,66 @@
+removeStrategy:
+  rbac: SYNC
+  items: NONE
+items:
+- kind: managedController
+  name: ${CONTROLLER_NAME_TARGET}
+  configuration:
+    kubernetes:
+      allowExternalAgents: false
+      terminationGracePeriodSeconds: 1200
+      image: CloudBees CI - Managed Controller - ${CONTROLLER_IMAGE_VERSION_TARGET}
+      memory: 4096
+      fsGroup: '1000'
+      cpus: 1.0
+      readinessTimeoutSeconds: 5
+      livenessInitialDelaySeconds: 300
+      readinessInitialDelaySeconds: 30
+      clusterEndpointId: default
+      disk: 50
+      readinessFailureThreshold: 100
+      livenessTimeoutSeconds: 10
+      storageClassName: ${STORAGE_CLASS}
+      domain: ${CONTROLLER_NAME}
+      livenessPeriodSeconds: 10
+      javaOptions: -XshowSettings:vm -XX:+AlwaysPreTouch -XX:+UseG1GC -XX:+DisableExplicitGC
+        -XX:+ParallelRefProcEnabled -XX:+UseStringDeduplication -Dhudson.slaves.NodeProvisioner.initialDelay=0
+# This is a sample on how to patch yaml, here for example with an extra volume mount called "backup"
+#      yaml: |
+#        ---
+#        apiVersion: "apps/v1"
+#        kind: "StatefulSet"
+#        spec:
+#          template:
+#            metadata:
+#              annotations:
+#                cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
+#            spec:
+#              containers:
+#                - name: "jenkins"
+#                  volumeMounts:
+#                    - name: "backup"
+#                      mountPath: "/backup"
+#              volumes:
+#                - name: backup
+#                  persistentVolumeClaim:
+#                    claimName: backup
+  description: ''
+  displayName: ${CONTROLLER_NAME_TARGET}
+  properties:
+  - configurationAsCode:
+      bundle: ${BUNDLE_NAME}
+  - sharedHeaderLabelOptIn:
+      optIn: true
+  - healthReporting:
+      enabled: true
+  - optOutProperty:
+      securityEnforcerOptOutMode:
+        optOutNone: {
+          }
+  - owner:
+      delay: 5
+      owners: ''
+  - envelopeExtension:
+      allowExceptions: false
+  - sharedConfigurationOptOut:
+      optOut: false
