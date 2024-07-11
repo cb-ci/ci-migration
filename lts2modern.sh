@@ -41,7 +41,7 @@ echo "------------------  CREATE BACKUP ------------------"
 
 #For testing purposes we create a backup locally from an OSS Controller
 CUR_DIR=$(pwd)
-cd /Users/acaternberg/projects/docker-jenkins-oss-controller/jenkins-data
+cd /Users/XXX/projects/docker-jenkins-oss-controller/jenkins-data
 tar -cvzf  $CUR_DIR/$BACKUP_FILE \
     --exclude=cache/ \
     --exclude=plugins/ \
