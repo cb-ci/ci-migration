@@ -21,9 +21,9 @@ export BUNDLE_NAME="master/rs-jenkins-global"
 export STORAGE_CLASS=ssd-cloudbees-ci-cloudbees-core
 
 #SOURCE
-#Update to legacy controller name lateron, nit used yet
+#Update to legacy controller name later on, not used yet
 export CONTROLLER_NAME_SOURCE=$CONTROLLER_NAME_TARGET
-#Update to legacy controller URL lateron
+#Update to legacy controller URL later on
 export CONTROLLER_URL_SOURCE=${CONTROLLER_URL_TARGET}
 export CONTROLLER_TOKEN_SOURCE=$TOKEN
 
@@ -36,10 +36,10 @@ echo "------------------  CREATE BACKUP ------------------"
 
 #TODO: Set legacy Controller in quit mode when running a backup
 #see https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-controllers/how-to-start-stop-or-restart-your-instance
-#TODO: Legacy controller on-prem might require ssh exec to create a backup remotly
+#TODO: Legacy controller on-prem might require ssh exec to create a backup remotely
 #see https://www.cyberciti.biz/faq/unix-linux-execute-command-using-ssh/
 
-#For testing purposes we just create a backup locally from an OSS Controller
+#For testing purposes we create a backup locally from an OSS Controller
 CUR_DIR=$(pwd)
 cd /Users/acaternberg/projects/docker-jenkins-oss-controller/jenkins-data
 tar -cvzf  $CUR_DIR/$BACKUP_FILE \
@@ -157,7 +157,7 @@ cat gen/update-credentials-system-level.groovy | sed  "s#^\/\/ encoded.*#encoded
 curl --data-urlencode "script=$(cat gen/update-credentials-system-level-mod.groovy)" \
 --user $CONTROLLER_TOKEN_TARGET ${CONTROLLER_URL_TARGET}/scriptText
 
-#reload new Jobs from disk
+#reload new Jobs from the disk
 # curl -L -s -u $CONTROLLER_TOKEN_TARGET -XPOST  "$CONTROLLER_URL_TARGET/reload" 2>&1 > /dev/null
 
 #Acceptance test
