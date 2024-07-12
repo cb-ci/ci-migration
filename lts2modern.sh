@@ -8,6 +8,7 @@ set +x
 #https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/cloudbees-jenkins-platform-to-cloudbees-ci/
 #https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/jenkins-to-ci-trad-migration/
 #https://www.youtube.com/watch?v=urmNi61PDbc
+#https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/bundle-management-api
 
 #TARGET
 export BASE_URL="https://yourcloudbeesciurl.org"
