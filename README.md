@@ -17,9 +17,9 @@ links O followed:
 
 * Create a backup from the legacy Controller (Jenkins OSS LTS usually)
 * Create a target Controller (Kubernetes)
-* Use existing [casc bundle](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-controller/create-bundle) with plugins 
-* Copy the backup to the target Controller
-* Extract the backup and overwrite JENKINS_HOME on the target Controller
+** Optional: Assign an existing [casc bundle](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-controller/create-bundle) with plugins 
+* Copy the backup file to the target Controller
+* Extract the backup file and overwrite JENKINS_HOME on the target Controller
 * Restart the Controller
 * Migrate Credentials
 * Run Acceptance test
@@ -28,7 +28,7 @@ See scripted example: [lts2modern.sh](lts2modern.sh)
 
 # Steps: Casc approach
 
-* Export a list of installed plugins from teh legacy Controller 
+* Export a list of installed plugins from the legacy Controller 
 * convert the list to `plugins.yaml`
 * Install the [JCasC](https://github.com/jenkinsci/configuration-as-code-plugin) Plugin on the legacy Controller
 * Export `jenkins.yaml` from legacy Controller
