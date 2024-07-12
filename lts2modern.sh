@@ -44,7 +44,7 @@ echo "------------------  CREATE BACKUP ------------------"
 #For testing purposes we create a backup locally from an OSS Controller
 CUR_DIR=$(pwd)
 cd /Users/XXX/projects/docker-jenkins-oss-controller/jenkins-data
-#when using a casc-bundle, we might define our plugins in plugins.yaml. So we can exclude them from the back using the  --exclude=plugins/ \
+#when using a casc-bundle, we might define our plugins in plugins.yaml. If so, we can exclude them from the backup using the  --exclude=plugins/ \
 #remove the  --exclude=plugins/  filter if you want to get the plugins also in your backup (f.e. when not using plugins.yaml for the target controller provisioning)
 tar -cvzf  $CUR_DIR/$BACKUP_FILE \
     --exclude=cache/ \
