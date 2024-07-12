@@ -1,6 +1,6 @@
 # ci-migration
 
-Script approaches of migration steps for Jenkins OSS LTS to CI Controller (k8s) migrations
+Script approaches of migration steps for Jenkins OSS LTS to CI Controller (k8s) 
 
 links O followed:
 
@@ -10,12 +10,14 @@ links O followed:
 * https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/cloudbees-jenkins-platform-to-cloudbees-ci/
 * https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/jenkins-to-ci-trad-migration/
 * https://www.youtube.com/watch?v=urmNi61PDbc
+* https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/bundle-management-api
+* https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-controller/create-bundle
 
 # Steps: Copy approach 
 
 * Create a backup from the legacy Controller (Jenkins OSS LTS usually)
 * Create a target Controller (Kubernetes)
-* Use existing casc bundle with plugins
+* Use existing [casc bundle](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-controller/create-bundle) with plugins 
 * Copy the backup to the target Controller
 * Extract the backup and overwrite JENKINS_HOME on the target Controller
 * Restart the Controller
@@ -27,11 +29,11 @@ See scripted example: [lts2modern.sh](lts2modern.sh)
 # Steps: Casc approach
 
 * Export a list of installed plugins from teh legacy Controller 
-* convert the list to plugins.yaml
-* Install JCasC on the legacy Controller
-* Export jenkins.yaml from legacy Controller
-* Bake a casc bundle with the plugins and jenkins yaml
-* review the jenkins.yaml, optimize/clean it
+* convert the list to `plugins.yaml`
+* Install the [JCasC](https://github.com/jenkinsci/configuration-as-code-plugin) Plugin on the legacy Controller
+* Export `jenkins.yaml` from legacy Controller
+* Bake a [casc bundle](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-controller/create-bundle), including the `plugins,yaml` and `jenkins yaml`
+* review the `jenkins.yaml` , optimize/clean it
 * Create a new controller from casc bundle
 See example: TODO
 
