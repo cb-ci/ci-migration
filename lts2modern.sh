@@ -43,7 +43,7 @@ echo "------------------  CREATE BACKUP ------------------"
 #For testing purposes we create a backup locally from an OSS Controller
 CUR_DIR=$(pwd)
 cd /Users/XXX/projects/docker-jenkins-oss-controller/jenkins-data
-#when using casc-bundle, we might define our plugins in plugins.yaml. So we can exclude them from the back using the  --exclude=plugins/ \
+#when using a casc-bundle, we might define our plugins in plugins.yaml. So we can exclude them from the back using the  --exclude=plugins/ \
 #remove the  --exclude=plugins/  filter if you want to get the plugins also in your backup (f.e. when not using plugins.yaml for the target controller provisioning)
 tar -cvzf  $CUR_DIR/$BACKUP_FILE \
     --exclude=cache/ \
@@ -74,7 +74,7 @@ mkdir -p $GEN_DIR
 #Use existing casc bundle with plugins
 envsubst < templates/create-mm.yaml > $GEN_DIR/${CONTROLLER_NAME_TARGET}.yaml
 cat $GEN_DIR/${CONTROLLER_NAME_TARGET}.yaml
-
+#see https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/bundle-management-api
 curl -Ls -XPOST \
    --user $CONTROLLER_TOKEN_TARGET \
    "${CJOC_URL}/casc-items/create-items" \
