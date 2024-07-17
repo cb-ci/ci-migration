@@ -12,6 +12,7 @@ set +x
 
 #TARGET
 export BASE_URL="https://yourcloudbeesciurl.org"
+#Token must be created on CJOC level, not on Controller level
 export TOKEN="user:token"
 export CJOC_URL=${BASE_URL}"/cjoc"
 export CONTROLLER_NAME_TARGET="mytest-casc"
@@ -26,6 +27,7 @@ export STORAGE_CLASS=ssd-cloudbees-ci-cloudbees-core
 #Update to legacy controller name later on, not used yet
 export CONTROLLER_NAME_SOURCE=$CONTROLLER_NAME_TARGET
 #Update to legacy controller URL later on
+#export CONTROLLER_URL_SOURCE"https://yourkenkinsossurl.org"
 export CONTROLLER_URL_SOURCE=${CONTROLLER_URL_TARGET}
 export CONTROLLER_TOKEN_SOURCE=$TOKEN
 
@@ -49,6 +51,7 @@ cd /Users/XXX/projects/docker-jenkins-oss-controller/jenkins-data
 tar -cvzf  $CUR_DIR/$BACKUP_FILE \
     --exclude=cache/ \
     --exclude=plugins/ \
+    --exclude=builds/ \
     --exclude=secret.key \
     --exclude=secret.key.not-so-secret \
     --exclude=secrets \
